@@ -1,0 +1,8 @@
+# Keep runtime dependencies next to the Vercel Python function as well as in
+# the repository-level requirements.txt. This makes function dependency
+# discovery explicit for the Python runtime.
+fastapi==0.116.1
+pydantic==2.11.7
+networkx==3.5
+openai==1.99.9
+python-dotenv==1.1.1
