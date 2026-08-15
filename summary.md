@@ -1,0 +1,15 @@
+# Blast Radius — Enterprise Access Exposure Intelligence
+
+Blast Radius is a security analysis platform that answers a critical incident-response question before an attacker does: **If this identity is compromised, what can it reach—and which few permissions should we review first to reduce the damage?**
+
+The product accepts an organization's access graph as a structured JSON or CSV upload. The graph represents employees, groups, applications, credentials, shared resources, cloud systems, and the permission relationships between them. For example, an employee may belong to a finance group, which can access Google Workspace, which can reach a shared payroll folder, an embedded credential, and ultimately a production database.
+
+After an analyst selects a potentially compromised employee, the platform performs deterministic graph analysis using NetworkX. It calculates every reachable downstream entity, assigns a 0–100 exposure score based on resource sensitivity, PII, and production environment flags, identifies the highest-risk access paths, and calculates a minimum permission cut—the smallest set of relationships that should be reviewed to disconnect the identity from critical assets.
+
+OpenAI is then used as a mandatory analyst-assistance layer. It receives a sanitized summary of the calculated result, not raw credentials or unrestricted source data, and produces a structured executive-ready brief: attacker narrative, risk justification, and prioritized permission-review rationale. The graph engine remains the factual source of truth; the AI explains and prioritizes the calculated findings.
+
+The user experience is designed around two focused screens. The first is an intake screen where an analyst uploads the access graph and selects the compromised identity. The second is a results workspace showing the exposure score, layered access map, critical paths, OpenAI security brief, and remediation checklist. Analysts can toggle a recommended permission removal and immediately see the recalculated blast radius. All remediation is preview-only; the system never changes real permissions.
+
+To scale from an MVP into an enterprise platform, Blast Radius can add controlled, read-only connectors for Entra ID, Okta, Google Workspace, AWS IAM, GitHub, SaaS applications, and cloud asset inventories. A normalization layer converts each provider's users, groups, roles, scopes, and assets into a common graph schema. For large environments, graph storage can move from in-memory processing to Neo4j or a managed graph database, enabling tenant-isolated queries across millions of relationships.
+
+Enterprise deployment would add SSO, role-based access control, encryption, audit logs, tenant isolation, scheduled graph refreshes, data retention policies, and approval workflows. Rather than directly revoking permissions, Blast Radius would generate a reviewed remediation ticket, change request, or SIEM/SOAR recommendation. This preserves separation of duties while giving security teams a measurable way to reduce over-permissioning and lateral-movement risk.

@@ -1,0 +1,22 @@
+{
+  "nodes": [
+    {"id":"emp_priya","type":"employee","label":"Priya Sharma","sensitivity":0},
+    {"id":"grp_finance","type":"identity_group","label":"Finance Team","sensitivity":1},
+    {"id":"app_workspace","type":"application","label":"Google Workspace","sensitivity":2},
+    {"id":"finance_drive","type":"resource","label":"Finance Drive","sensitivity":6},
+    {"id":"payroll_folder","type":"resource","label":"Payroll Folder","sensitivity":9,"pii":true},
+    {"id":"payroll_key","type":"credential","label":"Payroll API Key","sensitivity":8},
+    {"id":"prod_payroll_db","type":"cloud_resource","label":"Production Payroll DB","sensitivity":10,"environment":"prod"},
+    {"id":"marketing_drive","type":"resource","label":"Marketing Drive","sensitivity":2},
+    {"id":"emp_omar","type":"employee","label":"Omar Khan","sensitivity":0}
+  ],
+  "edges": [
+    {"from":"emp_priya","to":"grp_finance","relation":"member_of"},
+    {"from":"grp_finance","to":"app_workspace","relation":"has_access"},
+    {"from":"app_workspace","to":"finance_drive","relation":"can_read"},
+    {"from":"finance_drive","to":"payroll_folder","relation":"contains"},
+    {"from":"payroll_folder","to":"payroll_key","relation":"exposes"},
+    {"from":"payroll_key","to":"prod_payroll_db","relation":"authenticates_to"},
+    {"from":"app_workspace","to":"marketing_drive","relation":"can_read"}
+  ]
+}

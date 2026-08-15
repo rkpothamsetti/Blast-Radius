@@ -1,0 +1,33 @@
+/* OpenAI status banner and badge */
+.banner{margin:16px 0;padding:12px;border-radius:10px;background:linear-gradient(180deg,#071214,#071617);border:1px solid #153233}
+.banner-inner strong{color:#ffd1c1;display:block;margin-bottom:6px}
+.banner-inner p{margin:0;color:#9eabb7;font-size:13px}
+.banner-inner a{color:#a7ebca;text-decoration:underline}
+
+.analyst-row{display:flex;align-items:center;gap:12px}
+.openai-badge{width:14px;height:14px;border-radius:50%;flex:0 0 14px}
+.openai-badge.checking{background:#91a0ad;animation:pulse 2s infinite}
+.openai-badge.ready{background:#a7ebca;box-shadow:0 0 10px rgba(167,235,202,0.18);animation:glow 3s infinite}
+.openai-badge.missing{background:#d96b6b;box-shadow:0 0 6px rgba(217,107,107,0.12)}
+.analyst-text h3{margin:0;font-size:16px}
+.analyst-text p{margin:2px 0 0;color:#9eabb7;font-size:13px}
+
+@keyframes pulse{0%{transform:scale(1);opacity:1}50%{transform:scale(1.35);opacity:0.5}100%{transform:scale(1);opacity:1}}
+@keyframes glow{0%{box-shadow:0 0 0 rgba(167,235,202,0.02)}50%{box-shadow:0 0 18px rgba(167,235,202,0.22)}100%{box-shadow:0 0 0 rgba(167,235,202,0.02)}}
+
+/* Banner slide animation */
+.banner{overflow:hidden}
+.banner.show{animation:slideDown 320ms ease forwards}
+@keyframes slideDown{0%{transform:translateY(-8px);opacity:0}100%{transform:translateY(0);opacity:1}}
+.banner.hide{animation:slideUp 300ms ease forwards}
+@keyframes slideUp{0%{transform:translateY(0);opacity:1}100%{transform:translateY(-8px);opacity:0}}
+
+/* Modal */
+.openai-modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(rgba(3,6,7,0.6),rgba(3,6,7,0.6));z-index:60}
+.openai-modal-inner{background:#071218;border:1px solid #153233;padding:20px;border-radius:10px;max-width:520px;width:92%;color:#e9eff5;position:relative}
+.openai-modal h3{margin:0 0 8px}
+.openai-modal p{color:#9eabb7;margin:0 0 12px}
+.openai-template{background:#051217;padding:10px;border-radius:6px;border:1px solid #0f2b2a;color:#a7ebca}
+.openai-modal-close{position:absolute;right:10px;top:8px;border:0;background:transparent;color:#9eabb7;font-size:16px;cursor:pointer}
+.btn{background:#16352f;color:#a7ebca;border:1px solid #234a42;padding:8px 12px;border-radius:8px;cursor:pointer}
+.btn.secondary{background:transparent;border:1px solid #2b3b3c;color:#9eabb7}
